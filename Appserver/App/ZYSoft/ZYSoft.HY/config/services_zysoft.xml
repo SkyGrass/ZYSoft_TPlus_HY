@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<services domain="ZYSoft" desc="">
+  <service name="Chanjet.ZYSoft.HY.Interface.IHT"
+           className="Chanjet.ZYSoft.HY.Service.HT"
+           loadFrom="..\server\Chanjet.ZYSoft.HY.Service.dll"
+           desc="" mode="normal"></service>
+</services>

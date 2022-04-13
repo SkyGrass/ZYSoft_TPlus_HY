@@ -1,0 +1,7 @@
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.UIP\obj\Debug\Chanjet.ZYSoft.HY.UIP.csproj.AssemblyReference.cache
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.UIP\obj\Debug\Chanjet.ZYSoft.HY.UIP.csproj.CoreCompileInputs.cache
+E:\SpecialCode\ZYSoft_TPlus_HY\pubref\Chanjet.ZYSoft.HY.UIP.dll
+E:\SpecialCode\ZYSoft_TPlus_HY\pubref\Chanjet.ZYSoft.HY.UIP.pdb
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.UIP\obj\Debug\Chanjet.ZYSoft.HY.UIP.csproj.CopyComplete
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.UIP\obj\Debug\Chanjet.ZYSoft.HY.UIP.dll
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.UIP\obj\Debug\Chanjet.ZYSoft.HY.UIP.pdb

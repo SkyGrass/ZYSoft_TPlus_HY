@@ -1,0 +1,5 @@
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Interface\obj\Debug\Chanjet.ZYSoft.HY.Interface.csproj.CoreCompileInputs.cache
+E:\SpecialCode\ZYSoft_TPlus_HY\pubref\Chanjet.ZYSoft.HY.Interface.dll
+E:\SpecialCode\ZYSoft_TPlus_HY\pubref\Chanjet.ZYSoft.HY.Interface.pdb
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Interface\obj\Debug\Chanjet.ZYSoft.HY.Interface.dll
+E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Interface\obj\Debug\Chanjet.ZYSoft.HY.Interface.pdb
