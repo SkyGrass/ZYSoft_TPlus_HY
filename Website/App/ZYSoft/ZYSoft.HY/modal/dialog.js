@@ -1,6 +1,5 @@
 var dialog = {};
 function init(opt) {
-  const layer = opt.layer;
   const self = (dialog = new Vue({
     el: "#app",
     data() {
@@ -65,22 +64,22 @@ function init(opt) {
                 ),
                 ajaxResponse: function (url, params, response) {
                   if (response.state == "success") {
-                    return response.data.map((m, i) => {
+                    return response.data.map(function (m, i) {
                       m.rid = i + 1;
                       return m;
                     });
                   } else {
-                    layer.msg("没有查询到数据", { icon: 5 });
+                    top.layer.msg("没有查询到数据", { icon: 5 });
                     return [];
                   }
                 },
               });
             } else {
-              layer.msg(result.msg, { icon: 5 });
+              top.layer.msg(result.msg, { icon: 5 });
             }
           },
           error: function () {
-            layer.msg("查询配置信息出错!", { icon: 5 });
+            top.layer.msg("查询配置信息出错!", { icon: 5 });
           },
         });
       },
@@ -104,5 +103,11 @@ function init(opt) {
 }
 
 function getSelect() {
-  return dialog.grid.getSelectedData();
+  var rows = dialog.grid.getSelectedData();
+  if (rows != void 0 && rows.length <= 0) {
+    top.layer.msg("尚未选择数据！", { zIndex: new Date() * 1, icon: 5 });
+    return [];
+  } else {
+    return rows;
+  }
 }

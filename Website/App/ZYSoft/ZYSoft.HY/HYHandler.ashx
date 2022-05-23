@@ -602,7 +602,7 @@ public class HYHandler : IHttpHandler
         #region 读取配置
         public static string LoadJSON(string key)
         {
-            string filename = HttpContext.Current.Request.PhysicalApplicationPath + @"dialogConf.json";
+            string filename = HttpContext.Current.Request.PhysicalApplicationPath + @"hydialogconf.json";
             if (File.Exists(filename))
             {
                 using (StreamReader sr = new StreamReader(filename, encoding: System.Text.Encoding.UTF8))
@@ -626,7 +626,7 @@ public class HYHandler : IHttpHandler
 
         public static string LoadXML(string key)
         {
-            string filename = HttpContext.Current.Request.PhysicalApplicationPath + @"zysoftweb.config";
+            string filename = HttpContext.Current.Request.PhysicalApplicationPath + @"hyzysoftweb.config";
             XmlDocument xmldoc = new XmlDocument();
             xmldoc.Load(filename);
             XmlNode node = xmldoc.SelectSingleNode("/configuration/appSettings");

@@ -1,4 +1,4 @@
-const openDialog = (options) => {
+var openDialog = function (options) {
   var options = Object.assign(
     {},
     {
@@ -9,7 +9,7 @@ const openDialog = (options) => {
     options
   );
   layui.use("layer", function () {
-    const layer = (window.layer = layui.layer);
+    var layer = (window.layer = layui.layer);
 
     layer.open({
       type: options.type,

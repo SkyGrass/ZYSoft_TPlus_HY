@@ -1,14 +1,19 @@
-let dialog = {},
+var dialog = {},
   source = {};
 function init(opt, record) {
   source = opt;
-  const self = (dialog = new Vue({
+  var self = (dialog = new Vue({
     el: "#app",
     data: function () {
       return { list: [], grid1: {} };
     },
     methods: {
-      initGrid({ gridId, columns, callback }) {
+      initGrid(opt) {
+        var gridId = opt.gridId,
+          columns = opt.columns,
+          callback = opt.callback,
+          key = opt.key,
+          data = opt.data;
         var maxHeight =
           $(window).height() - $("#toolbarContainer").height() - 20;
         this[gridId] = new Tabulator("#" + gridId, {
@@ -17,10 +22,7 @@ function init(opt, record) {
           height: maxHeight,
           columnHeaderVertAlign: "bottom",
           columns: columns,
-        });
-
-        this[gridId].on("tableBuilt", () => {
-          callback && callback(this[gridId]);
+          data: data,
         });
       },
       doAddPerson() {
@@ -28,21 +30,21 @@ function init(opt, record) {
           title: "选取人员",
           url: "./modal/Dialog.aspx",
           selectable: true,
-          onSuccess: (layero, index, layer) => {
+          onSuccess: function (layero, index, layer) {
             var iframeWin = window[layero.find("iframe")[0]["name"]];
             iframeWin.init({
               dialogType: "person",
-              extend: { deptId: opt.DeptCode },
+              extend: { deptId: opt.iddepartment },
             });
           },
-          onBtnYesClick: (index, layero) => {
+          onBtnYesClick: function (index, layero, layer) {
             var iframeWin = window[layero.find("iframe")[0]["name"]];
             var rows = iframeWin.getSelect();
-            if (rows.length <= 0) {
-              layer.msg("请先选择", { icon: 5 });
-            } else {
-              rows.forEach((row) => {
-                var exist = self.list.filter((f) => f.FPersonCode == row.code);
+            if (rows != void 0 && rows.length > 0) {
+              rows.forEach(function (row) {
+                var exist = self.list.filter(function (f) {
+                  return f.FPersonCode == row.code;
+                });
                 if (exist.length <= 0) {
                   self.grid1.updateOrAddData([
                     {
@@ -73,12 +75,12 @@ function init(opt, record) {
         });
       },
       onDelRow(cell, row) {
-        const r = cell.getRow();
+        var r = cell.getRow();
         r.delete();
       },
       reCalc(cell) {
-        const row = cell.getData();
-        let result = math.format(
+        var row = cell.getData();
+        var result = math.format(
           math.multiply(
             math.bignumber(row.FPrice),
             math.bignumber(row.FQuantity)
@@ -89,6 +91,7 @@ function init(opt, record) {
       },
     },
     mounted() {
+      var _self = this;
       this.initGrid({
         gridId: "grid1",
         columns: grid3TableConf(this).concat([
@@ -102,13 +105,11 @@ function init(opt, record) {
             hozAlign: "center",
             headerSort: false,
             cellClick: function (e, cell) {
-              self.onDelRow(cell, cell.getRow().getData());
+              _self.onDelRow(cell, cell.getRow().getData());
             },
           },
         ]),
-        callback: () => {
-          this.grid1.setData(record);
-        },
+        data: record,
       });
     },
   }));
@@ -116,17 +117,30 @@ function init(opt, record) {
 
 function getSelect() {
   var rows = dialog.grid1.getData();
-  var total = rows.reduce((total, { FQuantity }) => {
-    return total + FQuantity;
+  var total = rows.reduce(function (total, ele) {
+    return total + ele.FQuantity;
   }, 0);
   if (rows.length <= 0) {
-    layer.msg("请先添加人员并填写数量!", { icon: 5 });
+    top.layer.msg("请先添加人员并填写数量!", {
+      zIndex: new Date() * 1,
+      icon: 5,
+    });
     return [];
-  } else if (rows.some((f) => f.FAmount <= 0)) {
-    layer.msg("请先正确填写数量!", { icon: 5 });
+  } else if (
+    rows.some(function (f) {
+      return f.FAmount <= 0;
+    })
+  ) {
+    top.layer.msg("请先正确填写数量!", {
+      zIndex: new Date() * 1,
+      icon: 5,
+    });
     return [];
   } else if (total > source.UnQuantity) {
-    layer.msg("分配数量已经超过最大量" + source.UnQuantity + "!", { icon: 5 });
+    top.layer.msg("分配数量已经超过最大量" + source.UnQuantity + "!", {
+      zIndex: new Date() * 1,
+      icon: 5,
+    });
     return [];
   } else {
     return rows;

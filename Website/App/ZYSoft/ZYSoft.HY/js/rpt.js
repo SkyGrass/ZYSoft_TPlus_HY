@@ -1,21 +1,21 @@
-﻿const self = (vm = new Vue({
+﻿var self = (vm = new Vue({
   el: "#app",
   data: function () {
     return {
       queryForm: {
-        startDate: new Date("2022-05-01"),
+        startDate: new Date(),
         endDate: new Date(),
-        deptId: "1",
-        deptCode: "01",
-        deptName: "总经办",
+        deptId: "",
+        deptCode: "",
+        deptName: "",
       },
       form: {
         date: new Date(),
-        deptId: "1",
+        deptId: "",
         warehouseId: "",
         deptCode: "",
-        warehouseCode: "01",
-        deptName: "总经办",
+        warehouseCode: "",
+        deptName: "",
         warehouseName: "",
       },
       activeName: "tab1",
@@ -48,30 +48,28 @@
       openDialog({
         title: "查询",
         url: "./modalFilter/ModalFilter.aspx",
-        onSuccess: (layero, index, layer) => {
+        onSuccess: function (layero, index, layer) {
           layer.setTop(layero);
           self.offset.top = $(layero).offset().top - 80;
           self.offset.left = $(layero).offset().left + 40;
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           iframeWin.init({ parent: self });
         },
-        onBtnYesClick: (index, layero) => {
+        onBtnYesClick: function (index, layero, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           var row = iframeWin.getSelect();
-          if (row.length <= 0) {
-            layer.msg("请先选择", { icon: 5 });
-          } else if (!row) {
-            layer.msg("最多只能选择一个", { icon: 5 });
-          } else {
+          if (row != void 0 && row.length > 0) {
             row = row[0];
-            self.queryForm.deptId = row.deptId;
-            self.queryForm.deptName = row.deptName;
+            if (row != void 0) {
+              self.queryForm.deptId = row.deptId;
+              self.queryForm.deptName = row.deptName;
 
-            self.form.deptId = row.deptId;
-            self.form.deptCode = row.deptCode;
-            self.form.deptName = row.deptName;
+              self.form.deptId = row.deptId;
+              self.form.deptCode = row.deptCode;
+              self.form.deptName = row.deptName;
 
-            self.queryGrid1();
+              self.queryGrid1();
+            }
 
             layer.close(index);
           }
@@ -79,7 +77,7 @@
       });
     },
     doSave() {
-      this.$refs["form"].validate((valid) => {
+      this.$refs["form"].validate(function (valid) {
         if (valid) {
           var rows = self.grid2.getData();
           if (rows.length <= 0) {
@@ -92,7 +90,7 @@
             FDeptCode: self.form.deptCode,
             FWhCode: self.form.warehouseCode,
             FMemo: self.form.memo,
-            Entry: rows.map((m) => {
+            Entry: rows.map(function (m) {
               return {
                 FInvCode: m.FInvCode,
                 FBatch: "",
@@ -112,7 +110,7 @@
           layer.confirm(
             "确定要上报记录吗?",
             { icon: 3, title: "提示" },
-            (index) => {
+            function (index) {
               var _index = layer.load(2);
               $.ajax({
                 type: "POST",
@@ -125,8 +123,11 @@
                 dataType: "json",
                 success: function (result) {
                   if (result.state == "success") {
+                    self.activeName = "tab1";
+                    self.queryGrid1();
+                    layer.close(index);
                   }
-                  layer.msg(result.msg, { icon: 5 });
+                  top.layer.msg(result.msg, { zIndex: new Date() * 1, icon: 5 });
                   layer.close(_index);
                 },
                 error: function () {
@@ -146,21 +147,17 @@
         title: title,
         url: "./modal/Dialog.aspx",
         offset: [self.offset.top, self.offset.left],
-        onSuccess: (layero, index, layer) => {
+        onSuccess: function (layero, index, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
-          iframeWin.init({ dialogType: type });
+          iframeWin.init({ layer, dialogType: type });
         },
-        onBtnYesClick: (index, layero) => {
+        onBtnYesClick: function (index, layero, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           var row = iframeWin.getSelect();
-          if (row.length <= 0) {
-            layer.msg("请先选择", { icon: 5 });
-          } else if (!row) {
-            layer.msg("最多只能选择一个", { icon: 5 });
-          } else {
+          if (row != void 0 && row.length > 0) {
             success && success(row);
-            layer.close(index);
           }
+          layer.close(index);
         },
       });
     },
@@ -168,23 +165,19 @@
       openDialog({
         title: "仓库",
         url: "./modal/Dialog.aspx",
-        onSuccess: (layero, index, layer) => {
+        onSuccess: function (layero, index, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           iframeWin.init({ layer, dialogType: "dept" });
         },
-        onBtnYesClick: (index, layero) => {
+        onBtnYesClick: function (index, layero, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           var row = iframeWin.getSelect();
-          if (row.length <= 0) {
-            layer.msg("请先选择", { icon: 5 });
-          } else if (!row) {
-            layer.msg("最多只能选择一个", { icon: 5 });
-          } else {
+          if (row != void 0 && row.length > 0) {
             row = row[0];
             self.form.deptId = row.id;
             self.form.deptName = row.name;
-            layer.close(index);
           }
+          layer.close(index);
         },
       });
     },
@@ -192,43 +185,44 @@
       openDialog({
         title: "仓库",
         url: "./modal/Dialog.aspx",
-        onSuccess: (layero, index, layer) => {
+        onSuccess: function (layero, index, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           iframeWin.init({ layer, dialogType: "warehouse" });
         },
-        onBtnYesClick: (index, layero, layer) => {
+        onBtnYesClick: function (index, layero, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           var row = iframeWin.getSelect();
-          if (row.length <= 0) {
-            layer.msg("请先选择", { icon: 5 });
-          } else if (!row) {
-            layer.msg("最多只能选择一个", { icon: 5 });
-          } else {
+          if (row != void 0 && row.length > 0) {
             row = row[0];
             self.form.warehouseId = row.id;
             self.form.warehouseName = row.name;
-            layer.close(index);
           }
+          layer.close(index);
         },
       });
     },
-    initGrid({ gridId, columns, callback, key }) {
+    initGrid(opt) {
+      var gridId = opt.gridId,
+        columns = opt.columns,
+        callback = opt.callback,
+        key = opt.key || "";
       var maxHeight =
         $(window).height() -
         $("#header").height() -
         $("#toolbarContainer").height() -
         125;
       this[gridId] = new Tabulator("#" + gridId, {
+        layout: "fitColumns",
         locale: true,
         langs: langs,
         height: maxHeight,
         columnHeaderVertAlign: "bottom",
         columns: columns,
-        key: key,
+        index: key,
         data: [],
         ajaxResponse: function (url, params, response) {
           if (response.state == "success") {
-            let t = response.data.map((m, i) => {
+            var t = response.data.map(function (m, i) {
               m.VoucherDate = dayjs(m.VoucherDate).format("YYYY-MM-DD");
               m.rid = i + 1;
               return m;
@@ -241,17 +235,13 @@
           }
         },
       });
-
-      this[gridId].on("tableBuilt", () => {
-        callback && callback(this[gridId]);
-      });
     },
     handleClick(tab, event) {
       this.canShow = this.activeName == "tab1";
     },
     queryGrid1() {
       var index = layer.load(2);
-      setTimeout(() => {
+      setTimeout(function () {
         self.grid1.clearData();
         self.grid1.setData(
           "./HYHandler.ashx",
@@ -271,35 +261,36 @@
         title: "明细记录",
         url: "./HYDetailPage.aspx?v=" + new Date() * 1,
         area: [$(window).width() - 100 + "px", $(window).height() - 100 + "px"],
-        onSuccess: (layero, index, layer) => {
+        onSuccess: function (layero, index, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           var _cache = self.grid2.getData();
-          _cache = _cache.filter(
-            (f) =>
+          _cache = _cache.filter(function (f) {
+            return (
               (f.FSouceBillID == item.ID ||
                 f.FSouceBillID == item.FSouceBillID) &&
               (f.FSourceBillEntryID == item.Entryid ||
                 f.FSourceBillEntryID == item.FSourceBillEntryID)
-          );
+            );
+          });
           iframeWin.init(item, _cache);
         },
-        onBtnYesClick: (index, layero) => {
+        onBtnYesClick: function (index, layero) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           var rows = iframeWin.getSelect();
-          if (rows.length > 0) {
+          if (rows != void 0 && rows.length > 0) {
             self.activeName = "tab2";
-            rows.forEach((row) => {
-              self.grid2.updateOrAddData(
-                [row].map((m) => {
-                  m.id =
-                    row.FSouceBillID +
-                    "_" +
-                    row.FSourceBillEntryID +
-                    "_" +
-                    row.FPersonCode;
-                  return m;
-                })
-              );
+            var newRows = rows.map(function (row) {
+              row.id =
+                row.FSouceBillID +
+                "_" +
+                row.FSourceBillEntryID +
+                "_" +
+                row.FPersonCode;
+              return row;
+            });
+
+            self.grid2.updateOrAddData(newRows).then(function () {
+              self.grid2.refreshFilter();
             });
             layer.close(index);
           }
@@ -333,6 +324,7 @@
         },
       ].concat(grid1TableConf),
     });
+
     this.initGrid({
       gridId: "grid2",
       columns: [
@@ -346,29 +338,14 @@
           hozAlign: "center",
           headerSort: false,
           cellClick: function (e, cell) {
-            const r = cell.getRow();
+            var r = cell.getRow();
             r.delete();
           },
         },
-      ]
-        .concat(grid2TableConf(this))
-        .concat([
-          {
-            formatter: function (cell, formatterParams, onRendered) {
-              return "<i class='el-icon-tickets'></i>";
-            },
-            width: 80,
-            title: "详情",
-            headerHozAlign: "center",
-            hozAlign: "center",
-            headerSort: false,
-            cellClick: function (e, cell) {
-              self.onClickDetail(cell.getRow().getData());
-            },
-          },
-        ]),
+      ].concat(grid2TableConf(this)),
       key: "id",
     });
+
     window.onresize = function () {
       self.grid1.setHeight(
         $(window).height() -

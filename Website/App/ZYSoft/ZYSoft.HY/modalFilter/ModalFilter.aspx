@@ -46,6 +46,9 @@
 			</el-col>
 		</el-row>
 	</div>
+	<script src="../js/poly/js.polyfills.js"></script>
+	<script src="../js/poly/es5.polyfills.js"></script>
+	<script src="../js/poly/proxy.min.js"></script>
 	<!-- import Vue before Element -->
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/vue.js"></script>

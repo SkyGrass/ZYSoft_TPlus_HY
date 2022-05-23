@@ -1,4 +1,4 @@
-﻿const grid1TableConf = [
+﻿var grid1TableConf = [
   {
     title: "ID",
     field: "ID",
@@ -92,140 +92,142 @@
   },
 ];
 
-const grid2TableConf = (self) => [
-  {
-    title: "单据ID",
-    field: "FSourceBillID",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 80,
-    headerSort: false,
-  },
-  {
-    title: "单据编号",
-    field: "FSourceBillNo",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 180,
-    headerSort: false,
-  },
-  {
-    title: "单据行号",
-    field: "FSourceBillEntryID",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 80,
-    headerSort: false,
-  },
-  {
-    title: "产品编码",
-    field: "FInvCode",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "产品名称",
-    field: "FInvName",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "人员编码",
-    field: "FPersonCode",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "人员名称",
-    field: "FPersonName",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "单价",
-    field: "FPrice",
-    headerHozAlign: "center",
-    hozAlign: "right",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "数量",
-    field: "FQuantity",
-    headerHozAlign: "center",
-    hozAlign: "right",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "金额",
-    field: "FAmount",
-    headerHozAlign: "center",
-    hozAlign: "right",
-    width: 120,
-    headerSort: false,
-  },
-];
+var grid2TableConf = function (self) {
+  return [
+    {
+      title: "单据ID",
+      field: "FSourceBillID",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 80,
+      headerSort: false,
+    },
+    {
+      title: "单据编号",
+      field: "FSourceBillNo",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 180,
+      headerSort: false,
+    },
+    {
+      title: "单据行号",
+      field: "FSourceBillEntryID",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 80,
+      headerSort: false,
+    },
+    {
+      title: "产品编码",
+      field: "FInvCode",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "产品名称",
+      field: "FInvName",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "人员编码",
+      field: "FPersonCode",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "人员名称",
+      field: "FPersonName",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "单价",
+      field: "FPrice",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "数量",
+      field: "FQuantity",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "金额",
+      field: "FAmount",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    },
+  ];
+};
 
-const grid3TableConf = (self) => [
-  {
-    title: "人员编码",
-    field: "FPersonCode",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "人员名称",
-    field: "FPersonName",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "单价",
-    field: "FPrice",
-    headerHozAlign: "center",
-    hozAlign: "right",
-    width: 120,
-    headerSort: false,
-  },
-  {
-    title: "数量",
-    field: "FQuantity",
-    headerHozAlign: "center",
-    hozAlign: "right",
-    width: 120,
-    headerSort: false,
-    editor: "number",
-    bottomCalc: "sum",
-    editorParams: {
-      min: 0,
-      precision: 2,
-      mask: "9999999999",
-      selectContents: true,
-      verticalNavigation: "table",
+var grid3TableConf = function (self) {
+  return [
+    {
+      title: "人员编码",
+      field: "FPersonCode",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 120,
+      headerSort: false,
     },
-    cellEdited: function (cell) {
-      self.reCalc(cell);
+    {
+      title: "人员名称",
+      field: "FPersonName",
+      headerHozAlign: "center",
+      hozAlign: "center",
+      width: 120,
+      headerSort: false,
     },
-  },
-  {
-    title: "金额",
-    field: "FAmount",
-    headerHozAlign: "center",
-    hozAlign: "right",
-    width: 120,
-    headerSort: false,
-  },
-];
+    {
+      title: "单价",
+      field: "FPrice",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "数量",
+      field: "FQuantity",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+      editor: "number",
+      bottomCalc: "sum",
+      editorParams: {
+        min: 0,  
+        selectContents: true,
+        verticalNavigation: "table",
+      },
+      cellEdited: function (cell) {
+        self.reCalc(cell);
+      },
+    },
+    {
+      title: "金额",
+      field: "FAmount",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    },
+  ];
+};
