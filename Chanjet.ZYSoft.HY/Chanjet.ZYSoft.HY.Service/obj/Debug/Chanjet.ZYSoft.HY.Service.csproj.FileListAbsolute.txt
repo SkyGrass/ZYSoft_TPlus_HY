@@ -5,3 +5,10 @@ E:\SpecialCode\ZYSoft_TPlus_HY\pubref\Chanjet.ZYSoft.HY.Service.pdb
 E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.csproj.CopyComplete
 E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.dll
 E:\SpecialCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.pdb
+D:\SourceCode\ZYSoft_TPlus_HY\pubref\Chanjet.ZYSoft.HY.Service.dll
+D:\SourceCode\ZYSoft_TPlus_HY\pubref\Chanjet.ZYSoft.HY.Service.pdb
+D:\SourceCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.csproj.AssemblyReference.cache
+D:\SourceCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.csproj.CoreCompileInputs.cache
+D:\SourceCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.csproj.CopyComplete
+D:\SourceCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.dll
+D:\SourceCode\ZYSoft_TPlus_HY\Chanjet.ZYSoft.HY\Chanjet.ZYSoft.HY.Service\obj\Debug\Chanjet.ZYSoft.HY.Service.pdb

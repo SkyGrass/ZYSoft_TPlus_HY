@@ -1,40 +1,52 @@
-.header {
-    height: 40px !important;
-    box-shadow: 2px 2px 4px #ddd;
-    display: flex;
-    justify-content: space-between;
-}
+﻿ html,
+ body {
+     font-family: "Microsoft Yahei";
+     font-size: 12px !important;
+ }
 
-.action {
-    color: #333;
-    height: 40px !important;
-    line-height: 20px;
-    width: 65px;
-}
+ .el-main {
+     padding: 10px 10px 0px 10px;
 
-.shortaction {
-    width: 15px;
-    color: #333;
-}
+ }
 
-.action:hover, .action:active {
-    color: #3788FF;
-}
+ .el-form-item__label {
+     font-size: 12px !important;
+ }
 
-.manin {
-    padding: 15px 10px 10px 10px;
-}
+ .el-form-item {
+     margin-bottom: 13px !important;
+     margin-right: 1px !important;
+     display: inline-flex !important;
+ }
 
-.el-form {
-    font-size: 13px !important;
-}
+ .form-item-max .el-form-item__content {
+     width: 250px;
+ }
 
-.el-input__inner, .el-input-group__append {
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid #ddd;
-}
+ .form-item-max .el-form-item__label {
+     padding-right: 2px;
+ }
 
-.el-input-group__append {
-    background-color: transparent;
-}
+ .form-item-full {
+     width: 100%;
+ }
+
+ .form-item-full .el-form-item__content {
+     width: 100%;
+ }
+
+ .el-card__body {
+     padding: 2px !important;
+ }
+
+ .tabulator {
+     background-color: #fff !important;
+ }
+
+ .moneyright .el-input__inner {
+     text-align: right;
+ }
+
+ input:disabled {
+     background-color: #fff !important;
+ }

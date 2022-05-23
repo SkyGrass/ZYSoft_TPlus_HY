@@ -1,0 +1,94 @@
+{
+  "dept": {
+    "url": "../HYHandler.ashx",
+    "method": "getDept",
+    "columns": [
+      {
+        "title": "行",
+        "field": "rid",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 30,
+        "headerSort": false
+      },
+      {
+        "title": "编码",
+        "field": "code",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 150,
+        "headerSort": false
+      },
+      {
+        "title": "名称",
+        "field": "name",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 250,
+        "headerSort": false
+      }
+    ]
+  },
+  "warehouse": {
+    "url": "../HYHandler.ashx",
+    "method": "getWarehouse",
+    "columns": [
+      {
+        "title": "行",
+        "field": "rid",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 30,
+        "headerSort": false
+      },
+      {
+        "title": "编码",
+        "field": "code",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 150,
+        "headerSort": false
+      },
+      {
+        "title": "名称",
+        "field": "name",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 250,
+        "headerSort": false
+      }
+    ]
+  },
+  "person": {
+    "url": "../HYHandler.ashx",
+    "method": "getPerson",
+    "selectable": true,
+    "key": "id",
+    "columns": [
+      {
+        "title": "行",
+        "field": "rid",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 30,
+        "headerSort": false
+      },
+      {
+        "title": "编码",
+        "field": "code",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 150,
+        "headerSort": false
+      },
+      {
+        "title": "名称",
+        "field": "name",
+        "headerHozAlign": "center",
+        "hozAlign": "center",
+        "width": 250,
+        "headerSort": false
+      }
+    ]
+  }
+}

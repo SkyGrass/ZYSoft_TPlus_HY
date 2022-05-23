@@ -1,408 +1,231 @@
-﻿const tableconf_in = [
-    {
-        title: "勾选",
-        formatter: "rowSelection",
-        titleFormatter: "rowSelection",
-        hozAlign: "center",
-        headerSort: false,
-        frozen: true,
-        cellClick: function (e, cell) {
-            cell.getRow().toggleSelect();
-        }
-    },
-    {
-        title: "状态",
-        field: "isMark",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false
-    },
-    {
-        title: "单号",
-        field: "code",
-        hozAlign: "center",
-        width: 180,
-        headerSort: false
-    },
-    {
-        title: "日期",
-        field: "voucherdate",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        formatter: "datetime",
-        formatterParams: {
-            inputFormat: "YYYY-MM-DD",
-            outputFormat: "YYYY-MM-DD",
-            invalidPlaceholder: "",
-        }
-    },
-    {
-        title: "供应商",
-        field: "Vendor",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false
-    },
-    {
-        title: "仓库",
-        field: "cWhName",
-        width: 120,
-        hozAlign: "center",
-        headerSort: false
-    },
-    {
-        title: "存货编码",
-        field: "cInvCode",
-        hozAlign: "center",
-        width: 150,
-        headerSort: false
-    },
-    {
-        title: "存货名称",
-        field: "cInvName",
-        hozAlign: "center",
-        headerSort: false,
-        width: 150,
-    },
-    {
-        title: "规格型号",
-        field: "specification",
-        hozAlign: "center",
-        headerSort: false,
-        width: 150,
-    },
-    {
-        title: "单位",
-        field: "cUnitName",
-        hozAlign: "center",
-        headerSort: false,
-        width: 60
-    },
-    {
-        title: "批号",
-        field: "batch",
-        hozAlign: "center",
-
-        width: 80,
-        headerSort: false
-    },
-    {
-        title: "生产日期",
-        field: "ProductionDate",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        formatter: "datetime",
-        formatterParams: {
-            inputFormat: "YYYY-MM-DD",
-            outputFormat: "YYYY-MM-DD",
-            invalidPlaceholder: "",
-        }
-    },
-    {
-        title: "失效日期",
-        field: "expiryDate",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        formatter: "datetime",
-        formatterParams: {
-            inputFormat: "YYYY-MM-DD",
-            outputFormat: "YYYY-MM-DD",
-            invalidPlaceholder: "",
-        }
-    },
-    {
-        title: "数量",
-        field: "quantity",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        editor: false,
-    },
-    {
-        title: "单价",
-        field: "TaxPrice",
-        hozAlign: "right",
-        width: 120,
-        headerSort: false
-    },
-    {
-        title: "金额",
-        field: "TaxAmount",
-        hozAlign: "right",
-        width: 120,
-        headerSort: false
-    }
-]
-
-const tableconf_trans = [{
-    title: "勾选",
-    formatter: "rowSelection",
-    titleFormatter: "rowSelection",
+﻿const grid1TableConf = [
+  {
+    title: "ID",
+    field: "ID",
+    headerHozAlign: "center",
     hozAlign: "center",
+    width: 40,
     headerSort: false,
-    frozen: true,
-    cellClick: function (e, cell) {
-        cell.getRow().toggleSelect();
-    }
-}, {
-    title: "状态",
-    field: "isMark",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false
-},
-{
+  },
+  {
     title: "单号",
-    field: "code",
+    field: "Code",
+    headerHozAlign: "center",
     hozAlign: "center",
     width: 180,
-    headerSort: false
-},
-{
+    headerSort: false,
+  },
+  {
     title: "日期",
-    field: "voucherdate",
+    field: "VoucherDate",
+    headerHozAlign: "center",
     hozAlign: "center",
     width: 120,
     headerSort: false,
-    formatter: "datetime",
-    formatterParams: {
-        inputFormat: "YYYY-MM-DD",
-        outputFormat: "YYYY-MM-DD",
-        invalidPlaceholder: "",
-    }
-},
-{
-    title: "调入仓库",
-    field: "cInWhName",
+  },
+  {
+    title: "部门",
+    field: "DeptName",
+    headerHozAlign: "center",
     hozAlign: "center",
     width: 120,
-    headerSort: false
-},
-{
-    title: "调出仓库",
-    field: "cOutWhName",
-    width: 120,
-    hozAlign: "center",
-    headerSort: false
-},
-{
-    title: "存货编码",
-    field: "cInvCode",
+    headerSort: false,
+  },
+  {
+    title: "产品编码",
+    field: "InvCode",
+    headerHozAlign: "center",
     hozAlign: "center",
     width: 150,
-    headerSort: false
-},
-{
-    title: "存货名称",
-    field: "cInvName",
+    headerSort: false,
+  },
+  {
+    title: "产品名称",
+    field: "InvName",
+    headerHozAlign: "center",
     hozAlign: "center",
     headerSort: false,
     width: 150,
-},
-{
+  },
+  {
     title: "规格型号",
-    field: "specification",
+    field: "InvStd",
+    headerHozAlign: "center",
     hozAlign: "center",
+    headerSort: false,
     width: 150,
-    headerSort: false
-},
-{
-    title: "单位",
-    field: "cUnitName",
-    hozAlign: "center",
-    headerSort: false,
-    width: 60
-},
-{
-    title: "批号",
-    field: "batch",
-    hozAlign: "center",
-    width: 80,
-    headerSort: false
-},
-{
-    title: "生产日期",
-    field: "ProductionDate",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-    formatter: "datetime",
-    formatterParams: {
-        inputFormat: "YYYY-MM-DD",
-        outputFormat: "YYYY-MM-DD",
-        invalidPlaceholder: "",
-    }
-},
-{
-    title: "失效日期",
-    field: "expiryDate",
-    hozAlign: "center",
-    width: 120,
-    headerSort: false,
-    formatter: "datetime",
-    formatterParams: {
-        inputFormat: "YYYY-MM-DD",
-        outputFormat: "YYYY-MM-DD",
-        invalidPlaceholder: "",
-    }
-},
-{
-    title: "数量",
+  },
+  {
+    title: "总量",
     field: "quantity",
-    hozAlign: "center",
+    headerHozAlign: "center",
+    hozAlign: "right",
     width: 120,
     headerSort: false,
     editor: false,
-},
-{
+  },
+  {
+    title: "已入",
+    field: "InQuantity",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+    editor: false,
+  },
+  {
+    title: "未入",
+    field: "UnQuantity",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+    editor: false,
+  },
+  {
     title: "单价",
-    field: "outPrice",
+    field: "price",
+    headerHozAlign: "center",
     hozAlign: "right",
     width: 120,
-    headerSort: false
-},
-{
+    headerSort: false,
+  },
+];
+
+const grid2TableConf = (self) => [
+  {
+    title: "单据ID",
+    field: "FSourceBillID",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 80,
+    headerSort: false,
+  },
+  {
+    title: "单据编号",
+    field: "FSourceBillNo",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 180,
+    headerSort: false,
+  },
+  {
+    title: "单据行号",
+    field: "FSourceBillEntryID",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 80,
+    headerSort: false,
+  },
+  {
+    title: "产品编码",
+    field: "FInvCode",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "产品名称",
+    field: "FInvName",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "人员编码",
+    field: "FPersonCode",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "人员名称",
+    field: "FPersonName",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "单价",
+    field: "FPrice",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "数量",
+    field: "FQuantity",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+  },
+  {
     title: "金额",
-    field: "outAmount",
+    field: "FAmount",
+    headerHozAlign: "center",
     hozAlign: "right",
     width: 120,
-    headerSort: false
-}
-]
+    headerSort: false,
+  },
+];
 
-const tableconf_out = [
-    {
-        title: "勾选",
-        formatter: "rowSelection",
-        titleFormatter: "rowSelection",
-        hozAlign: "center",
-        headerSort: false,
-        frozen: true,
-        cellClick: function (e, cell) {
-            cell.getRow().toggleSelect();
-        }
+const grid3TableConf = (self) => [
+  {
+    title: "人员编码",
+    field: "FPersonCode",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "人员名称",
+    field: "FPersonName",
+    headerHozAlign: "center",
+    hozAlign: "center",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "单价",
+    field: "FPrice",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "数量",
+    field: "FQuantity",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+    editor: "number",
+    bottomCalc: "sum",
+    editorParams: {
+      min: 0,
+      precision: 2,
+      mask: "9999999999",
+      selectContents: true,
+      verticalNavigation: "table",
     },
-    { field: "ID", visible: false },
-    {
-        title: "状态",
-        field: "isMark",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false
+    cellEdited: function (cell) {
+      self.reCalc(cell);
     },
-    {
-        title: "单号",
-        field: "code",
-        hozAlign: "center",
-        width: 180,
-        headerSort: false
-    },
-    {
-        title: "日期",
-        field: "voucherdate",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        formatter: "datetime",
-        formatterParams: {
-            inputFormat: "YYYY-MM-DD",
-            outputFormat: "YYYY-MM-DD",
-            invalidPlaceholder: "",
-        }
-    },
-    {
-        title: "仓库",
-        field: "cWhName",
-        width: 120,
-        hozAlign: "center",
-        headerSort: false
-    },
-    {
-        title: "存货编码",
-        field: "cInvCode",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false
-    },
-    {
-        title: "存货名称",
-        field: "cInvName",
-        hozAlign: "center",
-        headerSort: false,
-        width: 150,
-    },
-    {
-        title: "规格型号",
-        field: "specification",
-        hozAlign: "center",
-        width: 150,
-        headerSort: false
-    },
-    {
-        title: "单位",
-        field: "cUnitName",
-        hozAlign: "center",
-        headerSort: false,
-        width: 60
-    },
-    {
-        title: "批号",
-        field: "batch",
-        hozAlign: "center",
-
-        width: 80,
-        headerSort: false
-    },
-    {
-        title: "生产日期",
-        field: "ProductionDate",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        formatter: "datetime",
-        formatterParams: {
-            inputFormat: "YYYY-MM-DD",
-            outputFormat: "YYYY-MM-DD",
-            invalidPlaceholder: "",
-        }
-    },
-    {
-        title: "失效日期",
-        field: "expiryDate",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        formatter: "datetime",
-        formatterParams: {
-            inputFormat: "YYYY-MM-DD",
-            outputFormat: "YYYY-MM-DD",
-            invalidPlaceholder: "",
-        }
-    },
-    {
-        title: "数量",
-        field: "quantity",
-        hozAlign: "center",
-        width: 120,
-        headerSort: false,
-        editor: false,
-    },
-    {
-        title: "单价",
-        field: "Price",
-        hozAlign: "right",
-        width: 120,
-        headerSort: false
-    },
-    {
-        title: "金额",
-        field: "Amount",
-        hozAlign: "right",
-        width: 120,
-        headerSort: false
-    }
-]
-
+  },
+  {
+    title: "金额",
+    field: "FAmount",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+  },
+];

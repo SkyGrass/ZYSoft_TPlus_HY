@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<App id="ZYSoft.HT" name="MainPage" appType="Production">
+<App id="ZYSoft.HY" name="MainPage" appType="Production">
   <Web>
     <Extension Point_id="Ufida.T.EAP.Web.Page.Load">
-      <View id="CTLMainPage.aspx"
-            path="App/ZYSoft/ZYSoft.HT/CTLMainPage.aspx"
-            class="Chanjet.ZYSoft.HT.UIP.HTPage"   ></View>
+      <View id="HYMainPage.aspx"
+            path="App/ZYSoft/ZYSoft.HY/HYMainPage.aspx"
+            class="Chanjet.ZYSoft.HY.UIP.HYPage"   ></View>
     </Extension>
   </Web>
 </App>

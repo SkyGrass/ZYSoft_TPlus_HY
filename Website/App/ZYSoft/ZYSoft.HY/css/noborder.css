@@ -1,0 +1,11 @@
+.noBorder input,
+.noBorder textarea {
+    border-style: none !important;
+    border-bottom: 1px solid #e3e3e3 !important;
+    border-radius: 0px !important;
+    background-color: #fff !important;
+}
+
+.el-input__inner {
+    border-style: none !important;
+}
