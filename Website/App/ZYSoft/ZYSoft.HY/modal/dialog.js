@@ -69,17 +69,17 @@ function init(opt) {
                       return m;
                     });
                   } else {
-                    top.layer.msg("没有查询到数据", { icon: 5 });
+                    layer.msg("没有查询到数据", { icon: 5 });
                     return [];
                   }
                 },
               });
             } else {
-              top.layer.msg(result.msg, { icon: 5 });
+              layer.msg(result.msg, { icon: 5 });
             }
           },
           error: function () {
-            top.layer.msg("查询配置信息出错!", { icon: 5 });
+            layer.msg("查询配置信息出错!", { icon: 5 });
           },
         });
       },
@@ -105,7 +105,7 @@ function init(opt) {
 function getSelect() {
   var rows = dialog.grid.getSelectedData();
   if (rows != void 0 && rows.length <= 0) {
-    top.layer.msg("尚未选择数据！", { zIndex: new Date() * 1, icon: 5 });
+    layer.msg("尚未选择数据！", { zIndex: new Date() * 1, icon: 5 });
     return [];
   } else {
     return rows;

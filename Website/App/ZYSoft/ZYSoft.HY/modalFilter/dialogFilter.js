@@ -61,7 +61,7 @@ function getSelect() {
     result[0].endDate == null ||
     result[0].deptId == ""
   ) {
-    top.layer.msg("请选择日期和部门后再进行查询!", {
+    layer.msg("请选择日期和部门后再进行查询!", {
       zIndex: new Date() * 1,
       icon: 5,
     });

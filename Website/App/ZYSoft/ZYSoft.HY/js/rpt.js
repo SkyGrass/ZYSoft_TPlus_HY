@@ -127,7 +127,7 @@
                     self.queryGrid1();
                     layer.close(index);
                   }
-                  top.layer.msg(result.msg, { zIndex: new Date() * 1, icon: 5 });
+                  layer.msg(result.msg, { zIndex: new Date() * 1, icon: 5 });
                   layer.close(_index);
                 },
                 error: function () {

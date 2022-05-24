@@ -121,7 +121,7 @@ function getSelect() {
     return total + ele.FQuantity;
   }, 0);
   if (rows.length <= 0) {
-    top.layer.msg("请先添加人员并填写数量!", {
+    layer.msg("请先添加人员并填写数量!", {
       zIndex: new Date() * 1,
       icon: 5,
     });
@@ -131,13 +131,13 @@ function getSelect() {
       return f.FAmount <= 0;
     })
   ) {
-    top.layer.msg("请先正确填写数量!", {
+    layer.msg("请先正确填写数量!", {
       zIndex: new Date() * 1,
       icon: 5,
     });
     return [];
   } else if (total > source.UnQuantity) {
-    top.layer.msg("分配数量已经超过最大量" + source.UnQuantity + "!", {
+    layer.msg("分配数量已经超过最大量" + source.UnQuantity + "!", {
       zIndex: new Date() * 1,
       icon: 5,
     });
