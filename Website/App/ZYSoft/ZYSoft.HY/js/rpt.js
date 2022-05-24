@@ -281,7 +281,7 @@
             self.activeName = "tab2";
             var newRows = rows.map(function (row) {
               row.id =
-                row.FSouceBillID +
+                row.FSourceBillID +
                 "_" +
                 row.FSourceBillEntryID +
                 "_" +

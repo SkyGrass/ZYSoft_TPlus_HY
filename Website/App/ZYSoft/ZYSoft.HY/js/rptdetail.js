@@ -5,7 +5,7 @@ function init(opt, record) {
   var self = (dialog = new Vue({
     el: "#app",
     data: function () {
-      return { list: [], grid1: {} };
+      return { rowInfo: source, grid1: {} };
     },
     methods: {
       initGrid(opt) {
@@ -15,7 +15,10 @@ function init(opt, record) {
           key = opt.key,
           data = opt.data;
         var maxHeight =
-          $(window).height() - $("#toolbarContainer").height() - 20;
+          $(window).height() -
+          $("#toolbarContainer").height() -
+          $("#rowInfo").height() -
+          25;
         this[gridId] = new Tabulator("#" + gridId, {
           locale: true,
           langs: langs,
@@ -41,33 +44,25 @@ function init(opt, record) {
             var iframeWin = window[layero.find("iframe")[0]["name"]];
             var rows = iframeWin.getSelect();
             if (rows != void 0 && rows.length > 0) {
-              rows.forEach(function (row) {
-                var exist = self.list.filter(function (f) {
-                  return f.FPersonCode == row.code;
-                });
-                if (exist.length <= 0) {
-                  self.grid1.updateOrAddData([
-                    {
-                      id: row.id,
-                      FSourceBillID: opt.ID,
-                      FSourceBillNo: opt.Code,
-                      FSourceBillEntryID: opt.Entryid,
-                      FPersonCode: row.code,
-                      FPersonName: row.name,
-                      FInvCode: opt.InvCode,
-                      FInvName: opt.InvName,
-                      FQuantity: 0,
-                      FPrice: 1, //opt.Price,
-                      FAmount: math.format(
-                        math.multiply(
-                          math.bignumber(opt.Price),
-                          math.bignumber(0)
-                        ),
-                        14
-                      ),
-                    },
-                  ]);
-                }
+              var newRows = rows.map(function (row) {
+                row.id = opt.ID + "_" + opt.Entryid + "_" + row.code;
+                row.FSourceBillID = opt.ID;
+                row.FSourceBillNo = opt.Code;
+                row.FSourceBillEntryID = opt.Entryid;
+                row.FPersonCode = row.code;
+                row.FPersonName = row.name;
+                row.FInvCode = opt.InvCode;
+                row.FInvName = opt.InvName;
+                row.FQuantity = 0;
+                row.FPrice = opt.Price;
+                row.FAmount = math.format(
+                  math.multiply(math.bignumber(opt.Price), math.bignumber(0)),
+                  14
+                );
+                return row;
+              });
+              self.grid1.updateOrAddData(newRows).then(function () {
+                self.grid1.refreshFilter();
               });
               layer.close(index);
             }
