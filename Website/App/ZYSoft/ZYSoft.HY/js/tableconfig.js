@@ -1,13 +1,5 @@
 ﻿var grid1TableConf = [
   {
-    title: "ID",
-    field: "ID",
-    headerHozAlign: "center",
-    hozAlign: "center",
-    width: 40,
-    headerSort: false,
-  },
-  {
     title: "单号",
     field: "Code",
     headerHozAlign: "center",
@@ -56,6 +48,22 @@
     width: 150,
   },
   {
+    title: "单价",
+    field: "FMatPrice",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+  },
+  {
+    title: "人工单价",
+    field: "FPersonPrice",
+    headerHozAlign: "center",
+    hozAlign: "right",
+    width: 120,
+    headerSort: false,
+  },
+  {
     title: "总量",
     field: "quantity",
     headerHozAlign: "center",
@@ -81,14 +89,6 @@
     width: 120,
     headerSort: false,
     editor: false,
-  },
-  {
-    title: "单价",
-    field: "price",
-    headerHozAlign: "center",
-    hozAlign: "right",
-    width: 120,
-    headerSort: false,
   },
 ];
 
@@ -152,7 +152,15 @@ var grid2TableConf = function (self) {
     },
     {
       title: "单价",
-      field: "FPrice",
+      field: "FMatPrice",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "人工单价",
+      field: "FPersonPrice",
       headerHozAlign: "center",
       hozAlign: "right",
       width: 120,
@@ -174,6 +182,14 @@ var grid2TableConf = function (self) {
       width: 120,
       headerSort: false,
     },
+    {
+      title: "人工金额",
+      field: "FPersonAmount",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    }
   ];
 };
 
@@ -197,7 +213,15 @@ var grid3TableConf = function (self) {
     },
     {
       title: "单价",
-      field: "FPrice",
+      field: "FMatPrice",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    },
+    {
+      title: "人工单价",
+      field: "FPersonPrice",
       headerHozAlign: "center",
       hozAlign: "right",
       width: 120,
@@ -213,12 +237,13 @@ var grid3TableConf = function (self) {
       editor: "number",
       bottomCalc: "sum",
       editorParams: {
-        min: 0,  
+        min: 0,
         selectContents: true,
         verticalNavigation: "table",
       },
       cellEdited: function (cell) {
         self.reCalc(cell);
+        self.reCalcPerson(cell);
       },
     },
     {
@@ -229,5 +254,13 @@ var grid3TableConf = function (self) {
       width: 120,
       headerSort: false,
     },
+    {
+      title: "人工金额",
+      field: "FPersonAmount",
+      headerHozAlign: "center",
+      hozAlign: "right",
+      width: 120,
+      headerSort: false,
+    }
   ];
 };

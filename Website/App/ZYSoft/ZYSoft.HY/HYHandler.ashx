@@ -137,12 +137,27 @@ public class HYHandler : IHttpHandler
         /// <summary>
         ///  单价
         /// </summary>
+        public decimal FMatPrice { get; set; }
+
+        /// <summary>
+        ///  单价
+        /// </summary>
         public decimal FPrice { get; set; }
 
         /// <summary>
         ///  金额
         /// </summary>
         public decimal FAmount { get; set; }
+
+        /// <summary>
+        ///  人工单价
+        /// </summary>
+        public decimal FPersonPrice { get; set; }
+
+        /// <summary>
+        ///  人工金额
+        /// </summary>
+        public decimal FPersonAmount { get; set; }
 
         // <summary>
         /// 来源单据ID
@@ -226,8 +241,8 @@ public class HYHandler : IHttpHandler
             var list = new List<Result>();
             try
             {
-                string sql = string.IsNullOrEmpty(keyword) ? string.Format(@"select id,code,name from AA_Department") :
-                        string.Format(@"select id,code,name from AA_Department where code like '%{0}%' or name like '%{0}%'", keyword);
+                string sql = string.IsNullOrEmpty(keyword) ? string.Format(@"select * from AA_Department  where isEndNode=1") :
+                        string.Format(@"select id,code,name from AA_Department where isEndNode=1 and  code like '%{0}%' or name like '%{0}%'", keyword);
                 DataTable dt = ZYSoft.DB.BLL.Common.ExecuteDataTable(sql);
                 if (dt != null && dt.Rows.Count > 0)
                 {

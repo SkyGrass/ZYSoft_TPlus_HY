@@ -49,6 +49,7 @@
                                 <td>已入</td>
                                 <td>未入</td>
                                 <td>单价</td>
+                                <td>人工单价</td>
                             </tr>
                             <tr>
                                 <td style="padding:5px">{{rowInfo.InvCode}}</td>
@@ -57,7 +58,8 @@
                                 <td>{{rowInfo.quantity}}</td>
                                 <td>{{rowInfo.InQuantity}}</td>
                                 <td>{{rowInfo.UnQuantity}}</td>
-                                <td>{{rowInfo.Price}}</td>
+                                <td>{{rowInfo.FMatPrice}}</td>
+                                <td>{{rowInfo.FPersonPrice}}</td>
                             </tr>
                         </table>
                     </el-col>

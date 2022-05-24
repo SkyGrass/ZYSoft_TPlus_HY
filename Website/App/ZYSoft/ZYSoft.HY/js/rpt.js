@@ -98,8 +98,11 @@
                 FNum: "0",
                 FProductionDate: "",
                 FExpiryDate: "",
-                FPrice: m.FPrice,
+                FMatPrice: m.FMatPrice,
+                FPrice: m.FMatPrice,
                 FAmount: m.FAmount,
+                FPersonPrice: m.FPersonPrice,
+                FPersonAmount: m.FPersonAmount,
                 FSourceBillID: m.FSourceBillID,
                 FSourceBillEntryID: m.FSourceBillEntryID,
                 FSourceBillNo: m.FSourceBillNo,
@@ -195,6 +198,7 @@
           if (row != void 0 && row.length > 0) {
             row = row[0];
             self.form.warehouseId = row.id;
+            self.form.warehouseCode = row.code;
             self.form.warehouseName = row.name;
           }
           layer.close(index);
@@ -314,7 +318,7 @@
             return "<i class='el-icon-tickets'></i>";
           },
           width: 80,
-          title: "详情",
+          title: "操作",
           headerHozAlign: "center",
           hozAlign: "center",
           headerSort: false,

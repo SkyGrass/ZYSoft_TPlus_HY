@@ -54,9 +54,14 @@ function init(opt, record) {
                 row.FInvCode = opt.InvCode;
                 row.FInvName = opt.InvName;
                 row.FQuantity = 0;
-                row.FPrice = opt.Price;
+                row.FMatPrice = opt.FMatPrice;
+                row.FPersonPrice = opt.FPersonPrice;
                 row.FAmount = math.format(
-                  math.multiply(math.bignumber(opt.Price), math.bignumber(0)),
+                  math.multiply(math.bignumber(opt.FMatPrice), math.bignumber(0)),
+                  14
+                );
+                row.FPersonAmount = math.format(
+                  math.multiply(math.bignumber(opt.FPersonPrice), math.bignumber(0)),
                   14
                 );
                 return row;
@@ -77,12 +82,23 @@ function init(opt, record) {
         var row = cell.getData();
         var result = math.format(
           math.multiply(
-            math.bignumber(row.FPrice),
+            math.bignumber(row.FMatPrice),
             math.bignumber(row.FQuantity)
           ),
           14
         );
         this.grid1.updateData([{ id: row.id, FAmount: result }]);
+      },
+      reCalcPerson(cell) {
+        var row = cell.getData();
+        var result = math.format(
+          math.multiply(
+            math.bignumber(row.FPersonPrice),
+            math.bignumber(row.FQuantity)
+          ),
+          14
+        );
+        this.grid1.updateData([{ id: row.id, FPersonAmount: result }]);
       },
     },
     mounted() {
