@@ -14,7 +14,7 @@ var openDialog = function (options) {
     layer.open({
       type: options.type,
       title: options.title,
-      //closeBtn: 0,
+      closeBtn: options.closeBtn,
       maxmin: options.maxmin,
       area: options.area,
       offset: options.offset,

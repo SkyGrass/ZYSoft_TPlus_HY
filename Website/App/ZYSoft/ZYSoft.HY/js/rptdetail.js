@@ -26,6 +26,9 @@ function init(opt, record) {
           columnHeaderVertAlign: "bottom",
           columns: columns,
           data: data,
+          keybindings: {
+            navNext: "13",
+          },
         });
       },
       doAddPerson() {
@@ -57,11 +60,17 @@ function init(opt, record) {
                 row.FMatPrice = opt.FMatPrice;
                 row.FPersonPrice = opt.FPersonPrice;
                 row.FAmount = math.format(
-                  math.multiply(math.bignumber(opt.FMatPrice), math.bignumber(0)),
+                  math.multiply(
+                    math.bignumber(opt.FMatPrice),
+                    math.bignumber(0)
+                  ),
                   14
                 );
                 row.FPersonAmount = math.format(
-                  math.multiply(math.bignumber(opt.FPersonPrice), math.bignumber(0)),
+                  math.multiply(
+                    math.bignumber(opt.FPersonPrice),
+                    math.bignumber(0)
+                  ),
                   14
                 );
                 return row;
@@ -139,7 +148,7 @@ function getSelect() {
     return [];
   } else if (
     rows.some(function (f) {
-      return f.FAmount <= 0;
+      return f.FQuantity <= 0;
     })
   ) {
     layer.msg("请先正确填写数量!", {

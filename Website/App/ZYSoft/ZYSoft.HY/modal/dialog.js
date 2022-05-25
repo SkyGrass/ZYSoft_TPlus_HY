@@ -27,6 +27,7 @@ function init(opt) {
             if (result.state == "success") {
               result = result.data;
               self.url = result.url;
+              var columns = result.columns;
               self.grid = new Tabulator("#table", {
                 locale: true,
                 langs: {
@@ -41,20 +42,7 @@ function init(opt) {
                 columnHeaderVertAlign: "bottom",
                 height: 245,
                 selectable: result.selectable || 1,
-                columns: [
-                  {
-                    title: "勾选",
-                    formatter: "rowSelection",
-                    titleFormatter: "rowSelection",
-                    headerHozAlign: "center",
-                    hozAlign: "center",
-                    headerSort: false,
-                    frozen: true,
-                    cellClick: function (e, cell) {
-                      cell.getRow().toggleSelect();
-                    },
-                  },
-                ].concat(result.columns),
+                columns: columns,
                 ajaxURL: self.url,
                 ajaxConfig: "POST",
                 ajaxParams: Object.assign(
@@ -66,6 +54,7 @@ function init(opt) {
                   if (response.state == "success") {
                     return response.data.map(function (m, i) {
                       m.rid = i + 1;
+                      m.isCheck = 0;
                       return m;
                     });
                   } else {

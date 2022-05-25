@@ -111,7 +111,7 @@
             }),
           };
           layer.confirm(
-            "确定要上报记录吗?",
+            "确定要保存记录吗?",
             { icon: 3, title: "提示" },
             function (index) {
               var _index = layer.load(2);
@@ -128,9 +128,13 @@
                   if (result.state == "success") {
                     self.activeName = "tab1";
                     self.queryGrid1();
+                    self.grid2.clearData();
                     layer.close(index);
                   }
-                  layer.msg(result.msg, { zIndex: new Date() * 1, icon: 5 });
+                  layer.msg(result.msg, {
+                    zIndex: new Date() * 1,
+                    icon: result.state == "success" ? 1 : 5,
+                  });
                   layer.close(_index);
                 },
                 error: function () {
@@ -265,6 +269,7 @@
         title: "明细记录",
         url: "./HYDetailPage.aspx?v=" + new Date() * 1,
         area: [$(window).width() - 100 + "px", $(window).height() - 100 + "px"],
+        closeBtn: 0,
         onSuccess: function (layero, index, layer) {
           var iframeWin = window[layero.find("iframe")[0]["name"]];
           var _cache = self.grid2.getData();

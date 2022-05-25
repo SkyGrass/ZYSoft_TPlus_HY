@@ -239,11 +239,12 @@ var grid3TableConf = function (self) {
       editorParams: {
         min: 0,
         selectContents: true,
-        verticalNavigation: "table",
+        // verticalNavigation: "table",
       },
       cellEdited: function (cell) {
         self.reCalc(cell);
         self.reCalcPerson(cell);
+        cell.getTable().navigateDown();
       },
     },
     {
